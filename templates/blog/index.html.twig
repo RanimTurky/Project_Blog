@@ -1,0 +1,26 @@
+{# templates/blog/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Blog</h1>
+
+    {% for article in articles %}
+        <article>
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.content }}</p>
+            <p>Published by: {{ article.user.username }}</p>
+            {% if article.image %}
+                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Article Image">
+            {% endif %}
+        </article>
+    {% endfor %}
+
+    <hr>
+
+    <h2>Create New Article</h2>
+    {{ form_start(articleForm) }}
+    {{ form_widget(articleForm) }}
+    <button type="submit">Publish Article</button>
+    {{ form_end(articleForm) }}
+{% endblock %}

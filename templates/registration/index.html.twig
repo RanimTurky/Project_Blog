@@ -1,0 +1,19 @@
+{# templates/article/create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Créer un article</h1>
+    <form method="post" action="{{ path('article_create') }}">
+        <label for="title">Titre de l'article:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="content">Contenu de l'article:</label>
+        <textarea id="content" name="content" required></textarea><br>
+
+        {# Gérez ici l'upload de l'image #}
+
+        <input type="submit" value="Créer l'article">
+    </form>
+    <a href="{{ path('article_list') }}">Retour à la liste des articles</a>
+{% endblock %}
